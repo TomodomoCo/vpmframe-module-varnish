@@ -1,6 +1,4 @@
-## Default WordPress cookie handling for Varnish
-
-# Drop any cookies sent to WordPress, except wordpress_ cookies
-if (!(req.url ~ "wp-(login|admin|comments-post)") && !(req.http.Cookie ~ "wordpress_")) {
-	remove req.http.Cookie;
+# remove all server-sent Set-Cookies.
+if (!(req.url ~ "wp-(login|admin)")) {
+	unset beresp.http.set-cookie;
 }
