@@ -94,7 +94,7 @@ sub vcl_fetch {
 	
 
 	# run site-specific rules
-	include "/etc/varnish/sites-recv.vcl";
+	include "/etc/varnish/sites-fetch.vcl";
 
 }
 
