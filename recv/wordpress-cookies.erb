@@ -1,0 +1,4 @@
+# remove all server-sent Set-Cookies.
+if (!(req.url ~ "wp-(login|admin)")) {
+	unset beresp.http.set-cookie;
+}

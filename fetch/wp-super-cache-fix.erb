@@ -1,0 +1,7 @@
+# fix WP-Super-Cache's overzealous 3 second timeout
+# we need to be a modicum more aggressive
+
+if (beresp.ttl == 3s)
+{
+	set beresp.ttl = 3600s;
+}
