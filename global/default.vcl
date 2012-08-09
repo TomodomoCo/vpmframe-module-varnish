@@ -115,8 +115,8 @@ sub vcl_miss {
 }
 
 sub vcl_deliver {
-	remote resp.http.X-Powered-By;
-	remote resp.http.WP-Super-Cache;
+	remove resp.http.X-Powered-By;
+	remove resp.http.WP-Super-Cache;
 
 	set resp.http.X-VPM-Served = "pongo";
 
