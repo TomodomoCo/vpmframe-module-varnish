@@ -118,6 +118,12 @@ sub vcl_deliver {
 	remove resp.http.X-Powered-By;
 	remove resp.http.WP-Super-Cache;
 
+	# if the magic marker for Age resetting is set, then reset the Age
+	if (resp.http.X-VPM-Is-New-Object) {
+		remove resp.http.X-VPM-Is-New-Object;
+		set resp.http.age = "0";
+	}
+
 	set resp.http.X-VPM-Served = "pongo";
 
 	set resp.http.X-VPM-Cache = obj.hits;
